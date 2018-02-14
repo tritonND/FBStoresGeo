@@ -4,26 +4,38 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { Geolocation } from '@ionic-native/geolocation';
+import { Device } from '@ionic-native/device';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { GeoPage } from '../pages/geo/geo';
+import { GeodistPage } from '../pages/geodist/geodist';
+import * as firebase from 'Firebase';
+import { GoogleMaps, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+ 
+import { DatePicker } from '@ionic-native/date-picker';
+import { PgreadPage } from '../pages/pgread/pgread';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage, GeoPage, GeodistPage, PgreadPage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage, GeoPage, GeodistPage, PgreadPage
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
+    StatusBar, DatePicker,
+    SplashScreen, Geolocation, Device, GoogleMaps, NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
