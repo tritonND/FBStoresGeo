@@ -17,6 +17,7 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
  
 import { DatePicker } from '@ionic-native/date-picker';
 import { PgreadPage } from '../pages/pgread/pgread';
+import { File } from '@ionic-native/file';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { PgreadPage } from '../pages/pgread/pgread';
   ],
   providers: [
     StatusBar, DatePicker,
-    SplashScreen, Geolocation, Device, GoogleMaps, NativeGeocoder,
+    SplashScreen, Geolocation, Device, GoogleMaps, NativeGeocoder, File, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

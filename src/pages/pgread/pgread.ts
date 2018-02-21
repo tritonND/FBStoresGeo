@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
+import { File } from "@ionic-native/file";
  
 
 /**
@@ -16,10 +17,15 @@ import { DatePicker } from '@ionic-native/date-picker';
   templateUrl: 'pgread.html',
 })
 export class PgreadPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker) {
+   myd : any;
+  myDate : any;
+  dayss : any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker, private file : File) {
+    this.myDate = "";
   }
 
+
+  
 showDate(){
   this.datePicker.show({
     date: new Date(),
@@ -33,14 +39,44 @@ showDate(){
    allowFutureDates : true
   }).then(
     (date) => {console.log('Got date: ', date);
-     alert("The date is " + date);},
+     alert("The date is " + date);
+     this.dayss = date;
+   },
     err => console.log('Error occurred while getting date: ', err)
   );
 }
 
+
+getDateInp(){
+  // this.myd = this.myDate;
+   console.log(this.myDate);
+   alert(this.myDate);
+
+        
+   this.file.checkDir(this.file.dataDirectory, 'Documents/ionic')
+   .then(() => { 
+                console.log('Directory exists');
+                alert("Directory exists");
+              
+                this.file.listDir(this.file.dataDirectory, 'Documents/')
+                .then((dataDirectory) => { 
+                  console.log(dataDirectory);
+                })
+                .catch(err => console.log('Directory doesnt exist'));
+                
+              })
+   .catch(err => console.log('Directory doesnt exist'));
+ 
+ 
+}
   ionViewDidLoad() {
     console.log('ionViewDidLoad PgreadPage');
+    
+  }
 
+  ionViewDidChange()
+  {
+    this.getDateInp();
   }
 
 }

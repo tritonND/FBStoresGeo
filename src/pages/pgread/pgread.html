@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>pgread</ion-title>
+  <ion-navbar color="primary">
+     <ion-title> Date Option </ion-title>  
   </ion-navbar>
 
 </ion-header>
@@ -15,6 +15,18 @@
 
 <ion-content padding>
  
-  <p>Click to select date </p>
+  <!-- <p>Click to select date </p>
   <button ion-button (click) ="showDate()">selectDate</button>
+
+  -->
+
+ 
+  <ion-item>
+    <ion-label>Choose Date</ion-label>
+    <ion-datetime displayFormat="DD MMMM YYYY" min="2012"  max="2017" pickerFormat="DD MMMM YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+ 
+  <button ion-button (click) ="getDateInp()">GetDate  & Dir</button>
+  <!-- <p> {{this.myDate}}</p>  Very OK -->
+
 </ion-content>
