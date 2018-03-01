@@ -53,20 +53,24 @@ getDateInp(){
    alert(this.myDate);
 
         
-   this.file.checkDir(this.file.dataDirectory, 'Documents/ionic')
+   this.file.checkDir(this.file.dataDirectory, 'Documents')
    .then(() => { 
                 console.log('Directory exists');
                 alert("Directory exists");
-              
-                this.file.listDir(this.file.dataDirectory, 'Documents/')
-                .then((dataDirectory) => { 
-                  console.log(dataDirectory);
-                })
-                .catch(err => console.log('Directory doesnt exist'));
-                
+  // this.file.listDir(this.file.dataDirectory, 'Documents')
+  // .then((dataDir) => { 
+  //   console.log(dataDir);
+  //   alert("Directory exists - "+ dataDir);
+  //   console.log(dataDir.length);
+
+  // })
+  // .catch(err => console.log('Directory doesnt exist 2'));
+  
               })
    .catch(err => console.log('Directory doesnt exist'));
  
+
+  
  
 }
   ionViewDidLoad() {
